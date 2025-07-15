@@ -1,1 +1,138 @@
 /* You can add global styles to this file, and also import other style files */
+$primaryDimension: 30px;
+$display: flex;
+$flexDirectionRow: row;
+$flexDirectionColumn: column;
+$fontSize: large;
+$fontWeight: bold;
+$width: 100%;
+$height: 100%;
+
+@mixin commonNavBar($flexDirection) {
+    display: $display;
+    flex-direction: $flexDirection;
+    margin-top: $primaryDimension;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+}
+
+;
+
+@mixin commonContainer() {
+    width: $width;
+    height: $height;
+    display: $display;
+    flex-direction: $flexDirectionColumn;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #d6d7da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-container {
+    height: 85vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-container {
+    flex: 3;
+    background-color: #ffffff;
+    border-top-left-radius: $primaryDimension;
+    border-bottom-left-radius: $primaryDimension;
+}
+
+.right-container {
+    flex: 7;
+    background-color: #e8e9e9;
+    border-top-right-radius: $primaryDimension;
+    border-bottom-right-radius: $primaryDimension;
+}
+
+.right-container_box {
+    @include commonContainer();
+}
+
+.right-container-box__nav-bar {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-container-box__data-box {
+    flex: 12;
+}
+
+.nav-bar__tabs {
+    @include commonNavBar($flexDirectionRow);
+    margin-left: $primaryDimension;
+
+}
+
+.nav-bar__tabs--today {
+    margin-right: 20px;
+    color: #c5c5c5;
+}
+
+.nav-bar__tabs--today:hover {
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+.nav-bar__tabs--today-active {
+    color: #1a1a1a;
+    margin-right: 20px;
+}
+
+.nav-bar__metrics {
+    @include commonNavBar($flexDirectionRow);
+    margin-right: $primaryDimension;
+}
+
+.nav-bar__tabs--week {
+    color: #c5c5c5;
+}
+
+.nav-bar__tabs--week:hover {
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+.nav-bar__tabs--week-active {
+    color: #1a1a1a;
+}
+
+.search-input {
+    height: $primaryDimension;
+    width: 300px;
+    border-radius: $primaryDimension;
+    margin: $primaryDimension;
+}
+
+.left-container_box {
+    @include commonContainer();
+}
+.left-container-box__nav-bar{
+    flex: 2;
+}
+.left-container-box__data-bar{
+    flex: 12;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

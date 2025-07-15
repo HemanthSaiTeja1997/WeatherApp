@@ -1,0 +1,14 @@
+<div class="right-container-box">
+    <div class="right-container-box__nav-bar">
+        <div class="nav-bar__tabs">
+            <div class="nav-bar__tabs--today" (click)="onTodayClick()" [className]="today ? 'nav-bar__tabs--today-active':'nav-bar__tabs--today'">Today</div>
+            <div class="nav-bar__tabs--week" (click)="onWeekClick()" [className]="week ? 'nav-bar__tabs--week-active':'nav-bar__tabs--week' ">Week</div>
+        </div>
+                <div class="nav-bar__metrics">
+            <div class="nav-bar__metrics--celcius">°C</div>
+            <div class="nav-bar__metrics--fahrenheit">°F</div>
+        </div>
+    </div>
+    <div class="right-container-box__data-box"></div>
+
+</div>
