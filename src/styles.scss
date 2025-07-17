@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 $primaryDimension: 30px;
 $display: flex;
 $flexDirectionRow: row;
@@ -7,405 +6,343 @@ $fontSize: large;
 $fontWeight: bold;
 $width: 100%;
 $height: 100%;
+$colorGray: #c5c5c5;
+$colorDark: #1a1a1a;
+$colorBlue: cornflowerblue;
+$colorLightGray: #e8e9e9;
+$colorWhite: #ffffff;
+$colorContainerBg: #d6d7da;
+$fontSizel: large;
+$fontSizeXl: x-large;
+$fontSizeXxl: xx-large;
+$fontSizeText: 16px;
+$fontWeightMedium: 400;
+$fontWeightSemiBold: 500;
+$fontWeightBolder: bolder;
 
 @mixin commonNavBar($flexDirection) {
-    display: $display;
-    flex-direction: $flexDirection;
-    margin-top: $primaryDimension;
-    font-size: $fontSize;
-    font-weight: $fontWeight;
+  display: $display;
+  flex-direction: $flexDirection;
+  margin-top: $primaryDimension;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
 }
 
-;
+@mixin commonContainer {
+  width: $width;
+  height: $height;
+  display: $display;
+  flex-direction: $flexDirectionColumn;
+}
 
-@mixin commonContainer() {
-    width: $width;
-    height: $height;
-    display: $display;
-    flex-direction: $flexDirectionColumn;
+@mixin flexCenterRow {
+  display: $display;
+  flex-direction: $flexDirectionRow;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexColumn {
+  display: $display;
+  flex-direction: $flexDirectionColumn;
+}
+
+@mixin imageSize($width, $height, $radius: 10px) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+}
+
+@mixin cardStyle($width, $height) {
+  background-color: $colorWhite;
+  border-radius: 10px;
+  width: $width;
+  height: $height;
+  display: $display;
+  flex-direction: $flexDirectionColumn;
+  justify-content: start;
+  align-items: center;
+  font-size: $fontSizeXl;
+  font-weight: $fontWeightMedium;
+  padding-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+@mixin cardTextStyle($color, $size) {
+  color: $color;
+  font-size: $size;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .container {
-    width: 100vw;
-    height: 100vh;
-    background-color: #d6d7da;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: $colorContainerBg;
+  @include flexCenterRow;
 }
 
 .weather-container {
-    height: 85vh;
-    width: 70vw;
-    display: flex;
-    flex-direction: row;
+  height: 85vh;
+  width: 70vw;
+  display: $display;
+  flex-direction: $flexDirectionRow;
 }
 
 .left-container {
-    flex: 3;
-    background-color: #ffffff;
-    border-top-left-radius: $primaryDimension;
-    border-bottom-left-radius: $primaryDimension;
+  flex: 3;
+  background-color: $colorWhite;
+  border-top-left-radius: $primaryDimension;
+  border-bottom-left-radius: $primaryDimension;
 }
 
 .right-container {
-    flex: 7;
-    background-color: #e8e9e9;
-    border-top-right-radius: $primaryDimension;
-    border-bottom-right-radius: $primaryDimension;
+  flex: 7;
+  background-color: $colorLightGray;
+  border-top-right-radius: $primaryDimension;
+  border-bottom-right-radius: $primaryDimension;
 }
 
 .right-container_box {
-    @include commonContainer();
+  @include commonContainer;
 }
 
-
-
 .right-container-box__nav-bar {
-    flex: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+  flex: 2;
+  display: $display;
+  flex-direction: $flexDirectionRow;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $primaryDimension;
 }
 
 .right-container-box__data-box {
-    flex: 12;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+  flex: 12;
+  @include flexColumn;
+  margin-top: 10px;
 }
 
-.right-container-week-cards {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
+.right-container-week-cards,
 .right-container-today-cards {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  flex: 1;
+  @include flexCenterRow;
 }
 
 .right-container-today-highlight {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
+  flex: 3;
+  @include flexColumn;
 }
 
 .right-container-today-highlight-title {
-    flex: 2;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding-left: 10px;
-    font-size: x-large;
-    font-weight: bold;
-    color: cornflowerblue;
-
-
+  flex: 2;
+  margin: $primaryDimension 0;
+  padding-left: 10px;
+  @include cardTextStyle($colorBlue, $fontSizeXl);
+  font-weight: $fontWeight;
 }
+
 .input-hint {
   color: #888;
-  font-size: 16px;
+  font-size: $fontSizeText;
   margin: 20px;
   display: block;
 }
 
-
 .right-container-todays-highlight-cards {
-    flex: 8;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
+  flex: 8;
+  @include flexCenterRow;
 }
 
 .right-container-todays-highlight-card-title {
-    margin-bottom: 10px;
-    color: cornflowerblue;
-    font-size: xx-large;
+  margin-bottom: 10px;
+  @include cardTextStyle($colorBlue, $fontSizeXl);
 }
 
 .right-container-todays-highlight-value {
-    margin-top: 10px;
-    font-size: xx-large;
-    font-weight: 500;
+  margin-top: 10px;
+  font-size: $fontSizeXl;
+  font-weight: $fontWeightSemiBold;
 }
 
 .right-container-todays-highlight-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border-radius: 10px;
-    width: 260px;
-    height: 180px;
-    justify-content: start;
-    align-items: center;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding-top: 10px;
-    font-size: x-large;
-    font-weight: 400;
+  @include cardStyle(260px, 180px);
+}
+
+.card,
+.week-card {
+  background-color: $colorWhite;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: $fontSizeXl;
+  font-weight: $fontWeightSemiBold;
 }
 
 .card {
-    width: 100px;
-    height: 150px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-size: x-large;
-    font-weight: 500;
-
-}
-
-.card-temp-img img {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    margin-top: 5px;
+  width: 100px;
+  height: 150px;
+  margin: 0 5px;
 }
 
 .week-card {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
+}
+
+.card-temp-img img {
+  @include imageSize(50px, 50px);
+  margin-top: 5px;
 }
 
 .card-day {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .card-temp-value {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin: 10px 0;
 }
-
-// .gauge{
-//     flex: 2;
-//     width: 5%;
-//     max-width: 100px;
-//     font-size: 16px;
-//     color: #004033;
-//     font-weight: 500;
-// }
-// .gauge__body{
-//     width: 10%;
-//     height: 0;
-//     padding-bottom: 5%;
-//     background: #f3f3f4;
-//     position: relative;
-//     border-top-left-radius: 10% 20%;
-//     border-top-right-radius: 10% 20%;
-//     overflow: hidden;
-//     margin-top: 16px;
-
-// }
-// .gauge__fill {
-//   position: absolute;
-//   top: 10%;
-//   left: 0;
-//   width: inherit;
-//   height: 100%;
-//   background: #ffbf5e;
-//   transform-origin: center top;
-//   transform: rotate(0.25turn);
-//   transition: transform 0.2s ease-out;
-// }
-// .gauge__cover {
-//   width: 7.5%;
-//   height: 15%;
-//   background: #ffffff;
-//   border-radius: 50%;
-//   position: absolute;
-//   top: 25%;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   /* Text */
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding-bottom: 25%;
-//   box-sizing: border-box;
-//   color: #ffffff;
-// }
-
 
 .nav-bar__tabs {
-    @include commonNavBar($flexDirectionRow);
-    margin-left: $primaryDimension;
-
+  @include commonNavBar($flexDirectionRow);
+  margin-left: $primaryDimension;
 }
 
-.nav-bar__tabs--today {
-    margin-right: 20px;
-    color: #c5c5c5;
+.nav-bar__tabs--today,
+.nav-bar__tabs--week {
+  color: $colorGray;
 }
 
 .nav-bar__tabs--today:hover {
-    color: #1a1a1a;
-    cursor: pointer;
+  color: $colorDark;
+  cursor: pointer;
+}
+
+.nav-bar__tabs--today-active,
+.nav-bar__tabs--week-active {
+  color: $colorBlue;
+  font-size: $fontSizeXl;
+  margin-left: 10px;
 }
 
 .nav-bar__tabs--today-active {
-    color: cornflowerblue;
-    margin-right: 20px;
-    font-size: x-large;
-
+  margin-right: 20px;
 }
 
 .nav-bar__metrics {
-    @include commonNavBar($flexDirectionRow);
-    margin-right: $primaryDimension;
-}
-
-.nav-bar__tabs--week {
-    color: #c5c5c5;
+  @include commonNavBar($flexDirectionRow);
+  margin-right: $primaryDimension;
 }
 
 .nav-bar__tabs--week:hover {
-    color: cornflowerblue;
-    cursor: pointer;
-}
-
-.nav-bar__tabs--week-active {
-    color: cornflowerblue;
-    font-size: x-large;
-
+  color: $colorBlue;
+  cursor: pointer;
 }
 
 .search-input {
-    height: $primaryDimension;
-    width: 400px;
-    margin-left: 20px;
-    border-radius: $primaryDimension;
-    margin-top: $primaryDimension;
-    outline: none;
-    padding: 8px 12px;
-  font-size: 16px;
+  height: $primaryDimension;
+  width: 400px;
+  margin-left: 20px;
+  border-radius: $primaryDimension;
+  margin-top: $primaryDimension;
+  outline: none;
+  padding: 8px 12px;
+  font-size: $fontSizeText;
   border: 2px solid #333;
 }
 
 .left-container_box {
-    @include commonContainer();
+  @include commonContainer;
 }
 
 .left-container-box__nav-bar {
-     display: flex;
-  flex-direction: column;
+  @include flexColumn;
   align-items: flex-start;
   gap: 4px;
   margin-bottom: 12px;
 }
 
 .left-container-box__data-box {
-    flex: 12;
-    display: flex;
-    flex-direction: column;
-    margin-left: $primaryDimension;
-    margin-right: $primaryDimension;
-    font-size: x-large;
-
+  flex: 12;
+  @include flexColumn;
+  margin: 0 $primaryDimension;
+  font-size: $fontSizel;
 }
 
 .left-container-temp-data {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  @include flexColumn;
 }
 
 .left-container-temp-img {
-    flex: 2;
+  flex: 2;
 }
 
 .left-container-temp-img img {
-    width: 400px;
-    height: 300px;
+  @include imageSize(400px, 300px, 30px);
 }
 
 .left-container-temp-value {
-    flex: 1;
-    font-size: 62px;
-    font-weight: normal;
+  flex: 1;
+  font-size: 62px;
+  font-weight: normal;
 }
 
 .left-container-temp-value sup {
-    position: relative;
-    top: 3px;
-    font-size: 36px;
+  position: relative;
+  top: 3px;
+  font-size: 36px;
 }
 
-.left-container-day-time {
-    margin-top: 10px;
-}
-
-.left-container-temp-summary-value {
-    margin-top: 20px;
-}
-
+.left-container-day-time,
+.left-container-temp-summary-value,
 .left-container-rain-weather-value {
-    margin-top: 10px;
-}
-
-.left-container-other-details {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
+  margin-top: 10px;
 }
 
 .left-container-temp-summary {
-    flex: 2;
-    display: flex;
-    flex-direction: row;
+  flex: 2;
+  display: $display;
+  flex-direction: $flexDirectionRow;
 }
 
 .left-container-rain-stats {
-    flex: 2;
-    display: flex;
-    flex-direction: row;
+  flex: 2;
+  display: $display;
+  flex-direction: $flexDirectionRow;
+}
+
+.left-container-other-details {
+  flex: 2;
+  @include flexColumn;
 }
 
 .left-container-location-details {
-    flex: 5;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  flex: 5;
+  @include flexColumn;
+  text-align: center;
 }
 
 .left-container-location-img img {
-    width: 400px;
-    height: 150px;
-    border-radius: 30px;
-    margin-top: 30PX;
+  @include imageSize(400px, 150px, 30px);
+  margin-top: 30px;
 }
 
 .left-container-location-name {
-    margin-top: -80px;
-    font-size: 25px;
-    font-weight: bolder;
+  margin-top: -80px;
+  font-size: 25px;
+  font-weight: $fontWeightBolder;
 }
 
 .left-container-rain-stats-value {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 20px 0;
 }
