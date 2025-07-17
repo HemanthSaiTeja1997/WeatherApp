@@ -2,17 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../Services/weather-service';
 import { FormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { DayTimePipe } from '../../pipes/day-time-pipe';
 
 @Component({
   selector: 'app-left-container',
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule,DayTimePipe],
   templateUrl: './left-container.html',
   styleUrl: './left-container.scss'
 })
-export class LeftContainer{
+export class LeftContainer implements OnInit{
   weatherData:any;
   searchCityName:string='';
+  defaultCity:string='Hyderabad';
 constructor(private weatherService:WeatherService){}
+  ngOnInit(): void {
+    this.getData(this.defaultCity);
+  }
 
 
 onCitySearchChange(cityName: string): void {
@@ -25,8 +31,8 @@ onCitySearchChange(cityName: string): void {
     next: (res) => {
       this.weatherData = res;
       console.log(">>>>>>",this.weatherData);
-      
-      this.weatherService.setSearchCity(res); // 🔁 Share data to other components
+      this.searchCityName=''
+      this.weatherService.setSearchCity(res);
     },
     error: (err) => {
       console.error('API Error:', err);

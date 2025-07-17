@@ -17,9 +17,9 @@ export class WeatherService {
   setSearchCity(city: string) {
     this.citySearchSubject.next(city);
   }
-  getWeatherForecast(city: string, days: number = 1): Observable<any> {
+  getWeatherForecast(city: string, days:number = 7): Observable<any> {
     const url = `${this.baseUrl}/forecast.json?key=${this.apiKey}&q=${city}&days=${days}&aqi=yes&alerts=yes`;
-    return this._http.get<any>(url);
+    return this._http.get(url);
   }
  
 }

@@ -104,11 +104,19 @@ $height: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
     padding-left: 10px;
-    font-size: small;
+    font-size: x-large;
     font-weight: bold;
+    color: cornflowerblue;
 
 
 }
+.input-hint {
+  color: #888;
+  font-size: 16px;
+  margin: 20px;
+  display: block;
+}
+
 
 .right-container-todays-highlight-cards {
     flex: 8;
@@ -116,6 +124,19 @@ $height: 100%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+}
+
+.right-container-todays-highlight-card-title {
+    margin-bottom: 10px;
+    color: cornflowerblue;
+    font-size: xx-large;
+}
+
+.right-container-todays-highlight-value {
+    margin-top: 10px;
+    font-size: xx-large;
+    font-weight: 500;
 }
 
 .right-container-todays-highlight-card {
@@ -123,24 +144,28 @@ $height: 100%;
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 10px;
-    width: 150px;
+    width: 260px;
     height: 180px;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    font-size: x-large;
+    font-weight: 400;
 }
 
 .card {
-    width: 75px;
-    height: 120px;
+    width: 100px;
+    height: 150px;
     background-color: #ffffff;
     border-radius: 10px;
     margin-left: 5px;
+    margin-right: 5px;
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: x-large;
     font-weight: 500;
 
 }
@@ -165,6 +190,7 @@ $height: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 // .gauge{
 //     flex: 2;
 //     width: 5%;
@@ -232,8 +258,10 @@ $height: 100%;
 }
 
 .nav-bar__tabs--today-active {
-    color: #1a1a1a;
+    color: cornflowerblue;
     margin-right: 20px;
+    font-size: x-large;
+
 }
 
 .nav-bar__metrics {
@@ -246,19 +274,26 @@ $height: 100%;
 }
 
 .nav-bar__tabs--week:hover {
-    color: #1a1a1a;
+    color: cornflowerblue;
     cursor: pointer;
 }
 
 .nav-bar__tabs--week-active {
-    color: #1a1a1a;
+    color: cornflowerblue;
+    font-size: x-large;
+
 }
 
 .search-input {
     height: $primaryDimension;
-    width: 300px;
+    width: 400px;
+    margin-left: 20px;
     border-radius: $primaryDimension;
-    margin: $primaryDimension;
+    margin-top: $primaryDimension;
+    outline: none;
+    padding: 8px 12px;
+  font-size: 16px;
+  border: 2px solid #333;
 }
 
 .left-container_box {
@@ -266,7 +301,11 @@ $height: 100%;
 }
 
 .left-container-box__nav-bar {
-    flex: 2;
+     display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
 .left-container-box__data-box {
@@ -275,6 +314,8 @@ $height: 100%;
     flex-direction: column;
     margin-left: $primaryDimension;
     margin-right: $primaryDimension;
+    font-size: x-large;
+
 }
 
 .left-container-temp-data {
@@ -288,8 +329,8 @@ $height: 100%;
 }
 
 .left-container-temp-img img {
-    width: 160px;
-    height: 160px;
+    width: 400px;
+    height: 300px;
 }
 
 .left-container-temp-value {
@@ -310,11 +351,10 @@ $height: 100%;
 
 .left-container-temp-summary-value {
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
-.left-container-rain-stats-value {
-    margin-top: 20px;
+.left-container-rain-weather-value {
+    margin-top: 10px;
 }
 
 .left-container-other-details {
@@ -343,14 +383,16 @@ $height: 100%;
 }
 
 .left-container-location-img img {
-    width: 300px;
-    height: 80px;
-    border-radius: 20px;
-    margin-top: 100PX;
+    width: 400px;
+    height: 150px;
+    border-radius: 30px;
+    margin-top: 30PX;
 }
 
 .left-container-location-name {
-    margin-top: -50px;
+    margin-top: -80px;
+    font-size: 25px;
+    font-weight: bolder;
 }
 
 .left-container-rain-stats-value {
