@@ -1,8 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-right-container',
-  imports: [],
+  imports: [MatButtonModule,MatCardModule,CommonModule],
   templateUrl: './right-container.html',
   styleUrl: './right-container.scss'
 })
