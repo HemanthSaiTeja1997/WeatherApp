@@ -1,0 +1,97 @@
+@import './variables.scss';
+@import './mixins';
+
+.left-container {
+  flex: 3;
+  background-color: $colorWhite;
+  border-top-left-radius: $primaryDimension;
+  border-bottom-left-radius: $primaryDimension;
+}
+
+.left-container_box {
+  @include commonContainer;
+}
+
+.left-container-box__nav-bar {
+  @include flexColumn;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.left-container-box__data-box {
+  flex: 12;
+  @include flexColumn;
+  margin: 0 $primaryDimension;
+  font-size: $fontSizel;
+}
+
+.left-container-temp-data {
+  flex: 1;
+  @include flexColumn;
+}
+
+.left-container-temp-img {
+  flex: 2;
+}
+
+.left-container-temp-img img {
+  @include imageSize(400px, 300px, 30px);
+}
+
+.left-container-temp-value {
+  flex: 1;
+  font-size: 62px;
+  font-weight: normal;
+}
+
+.left-container-temp-value sup {
+  position: relative;
+  top: 3px;
+  font-size: 36px;
+}
+
+.left-container-day-time,
+.left-container-temp-summary-value,
+.left-container-rain-weather-value {
+  margin-top: 10px;
+}
+
+.left-container-temp-summary {
+  flex: 2;
+  display: $display;
+  flex-direction: $flexDirectionRow;
+}
+
+.left-container-rain-stats {
+  flex: 2;
+  display: $display;
+  flex-direction: $flexDirectionRow;
+}
+
+.left-container-other-details {
+  flex: 2;
+  @include flexColumn;
+}
+
+.left-container-location-details {
+  flex: 5;
+  @include flexColumn;
+  text-align: center;
+}
+
+.left-container-location-img img {
+  @include imageSize(400px, 150px, 30px);
+  margin-top: 30px;
+}
+
+.left-container-location-name {
+  margin-top: -80px;
+  font-size: 25px;
+  font-weight: $fontWeightBolder;
+}
+
+.left-container-rain-stats-value {
+  margin: 20px 0;
+}
+/* HTML: <div class="loader"></div> */

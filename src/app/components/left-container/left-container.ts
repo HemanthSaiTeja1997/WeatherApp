@@ -14,7 +14,7 @@ import { DayTimePipe } from '../../pipes/day-time-pipe';
 export class LeftContainer implements OnInit{
   weatherData:any;
   searchCityName:string='';
-  defaultCity:string='Hyderabad';
+  defaultCity:string='';
 constructor(private weatherService:WeatherService){}
   ngOnInit(): void {
     this.getData(this.defaultCity);
@@ -26,7 +26,6 @@ onCitySearchChange(cityName: string): void {
   }
   getData(cityName: string): void {
   if (!cityName.trim()) return;
-
   this.weatherService.getWeatherForecast(cityName).subscribe({
     next: (res) => {
       this.weatherData = res;

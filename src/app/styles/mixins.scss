@@ -1,0 +1,53 @@
+@mixin commonNavBar($flexDirection) {
+  display: $display;
+  flex-direction: $flexDirection;
+  margin-top: $primaryDimension;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+}
+
+@mixin commonContainer {
+  width: $width;
+  height: $height;
+  display: $display;
+  flex-direction: $flexDirectionColumn;
+}
+
+@mixin flexCenterRow {
+  display: $display;
+  flex-direction: $flexDirectionRow;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexColumn {
+  display: $display;
+  flex-direction: $flexDirectionColumn;
+}
+
+@mixin imageSize($width, $height, $radius: 10px) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+}
+
+@mixin cardStyle($width, $height) {
+  background-color: $colorWhite;
+  border-radius: 10px;
+  width: $width;
+  height: $height;
+  display: $display;
+  flex-direction: $flexDirectionColumn;
+  justify-content: start;
+  align-items: center;
+  font-size: $fontSizeXl;
+  font-weight: $fontWeightMedium;
+  padding-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+@mixin cardTextStyle($color, $size) {
+  color: $color;
+  font-size: $size;
+}

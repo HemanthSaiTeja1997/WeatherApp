@@ -1,0 +1,67 @@
+@import './variables';
+@import './mixins';
+
+.right-container {
+  flex: 7;
+  background-color: $colorLightGray;
+  border-top-right-radius: $primaryDimension;
+  border-bottom-right-radius: $primaryDimension;
+}
+
+.right-container_box {
+  @include commonContainer;
+}
+
+.right-container-box__nav-bar {
+  flex: 2;
+  display: $display;
+  flex-direction: $flexDirectionRow;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $primaryDimension;
+}
+
+.right-container-box__data-box {
+  flex: 12;
+  @include flexColumn;
+  margin-top: 10px;
+}
+
+.right-container-week-cards,
+.right-container-today-cards {
+  flex: 1;
+  @include flexCenterRow;
+}
+
+.right-container-today-highlight {
+  flex: 3;
+  @include flexColumn;
+}
+
+.right-container-today-highlight-title {
+  flex: 2;
+  margin: $primaryDimension 0;
+  padding-left: 10px;
+  @include cardTextStyle($colorBlue, $fontSizeXl);
+  font-weight: $fontWeight;
+}
+
+.right-container-todays-highlight-cards {
+  flex: 8;
+  @include flexCenterRow;
+}
+
+.right-container-todays-highlight-card-title {
+  margin-bottom: 10px;
+  @include cardTextStyle($colorBlue, $fontSizeXl);
+}
+
+.right-container-todays-highlight-value {
+  margin-top: 10px;
+  font-size: $fontSizeXl;
+  font-weight: $fontWeightSemiBold;
+}
+
+.right-container-todays-highlight-card {
+  @include cardStyle(260px, 180px);
+}
