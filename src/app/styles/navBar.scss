@@ -1,0 +1,37 @@
+@import './variables.scss';
+@import './mixins';
+.nav-bar__tabs {
+  @include commonNavBar($flexDirectionRow);
+  margin-left: $primaryDimension;
+}
+
+.nav-bar__tabs--today,
+.nav-bar__tabs--week {
+  color: $colorGray;
+}
+
+.nav-bar__tabs--today:hover {
+  color: $colorDark;
+  cursor: pointer;
+}
+
+.nav-bar__tabs--today-active,
+.nav-bar__tabs--week-active {
+  color: $colorBlue;
+  font-size: $fontSizeXl;
+  margin-left: 10px;
+}
+
+.nav-bar__tabs--today-active {
+  margin-right: 20px;
+}
+
+.nav-bar__metrics {
+  @include commonNavBar($flexDirectionRow);
+  margin-right: $primaryDimension;
+}
+
+.nav-bar__tabs--week:hover {
+  color: $colorBlue;
+  cursor: pointer;
+}

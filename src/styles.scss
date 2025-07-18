@@ -1,78 +1,11 @@
-$primaryDimension: 30px;
-$display: flex;
-$flexDirectionRow: row;
-$flexDirectionColumn: column;
-$fontSize: large;
-$fontWeight: bold;
-$width: 100%;
-$height: 100%;
-$colorGray: #c5c5c5;
-$colorDark: #1a1a1a;
-$colorBlue: cornflowerblue;
-$colorLightGray: #e8e9e9;
-$colorWhite: #ffffff;
-$colorContainerBg: #d6d7da;
-$fontSizel: large;
-$fontSizeXl: x-large;
-$fontSizeXxl: xx-large;
-$fontSizeText: 16px;
-$fontWeightMedium: 400;
-$fontWeightSemiBold: 500;
-$fontWeightBolder: bolder;
+@import './app/styles/variables.scss';
+@import './app/styles/mixins.scss';
+@import './app/styles/right-container.scss';
+@import './app/styles/left-container.scss';
+@import './app/styles/card.scss';
+@import './app/styles/navBar.scss';
+@import './app/styles/search-input.scss';
 
-@mixin commonNavBar($flexDirection) {
-  display: $display;
-  flex-direction: $flexDirection;
-  margin-top: $primaryDimension;
-  font-size: $fontSize;
-  font-weight: $fontWeight;
-}
-
-@mixin commonContainer {
-  width: $width;
-  height: $height;
-  display: $display;
-  flex-direction: $flexDirectionColumn;
-}
-
-@mixin flexCenterRow {
-  display: $display;
-  flex-direction: $flexDirectionRow;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin flexColumn {
-  display: $display;
-  flex-direction: $flexDirectionColumn;
-}
-
-@mixin imageSize($width, $height, $radius: 10px) {
-  width: $width;
-  height: $height;
-  border-radius: $radius;
-}
-
-@mixin cardStyle($width, $height) {
-  background-color: $colorWhite;
-  border-radius: 10px;
-  width: $width;
-  height: $height;
-  display: $display;
-  flex-direction: $flexDirectionColumn;
-  justify-content: start;
-  align-items: center;
-  font-size: $fontSizeXl;
-  font-weight: $fontWeightMedium;
-  padding-top: 10px;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-@mixin cardTextStyle($color, $size) {
-  color: $color;
-  font-size: $size;
-}
 
 html,
 body {
@@ -83,7 +16,18 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
+.pageNotFound{
+  background-color: rgb(186, 186, 215);
+  height: 100vh;
+  width: 100vw;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(240, 8, 8);
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
 .container {
   width: 100vw;
   height: 100vh;
@@ -92,283 +36,41 @@ body {
 }
 
 .weather-container {
+  
   height: 85vh;
   width: 70vw;
   display: $display;
   flex-direction: $flexDirectionRow;
 }
 
-.left-container {
-  flex: 3;
-  background-color: $colorWhite;
-  border-top-left-radius: $primaryDimension;
-  border-bottom-left-radius: $primaryDimension;
-}
-
-.right-container {
-  flex: 7;
-  background-color: $colorLightGray;
-  border-top-right-radius: $primaryDimension;
-  border-bottom-right-radius: $primaryDimension;
-}
-
-.right-container_box {
-  @include commonContainer;
-}
-
-.right-container-box__nav-bar {
-  flex: 2;
-  display: $display;
-  flex-direction: $flexDirectionRow;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: $primaryDimension;
-}
-
-.right-container-box__data-box {
-  flex: 12;
-  @include flexColumn;
-  margin-top: 10px;
-}
-
-.right-container-week-cards,
-.right-container-today-cards {
-  flex: 1;
-  @include flexCenterRow;
-}
-
-.right-container-today-highlight {
-  flex: 3;
-  @include flexColumn;
-}
-
-.right-container-today-highlight-title {
-  flex: 2;
-  margin: $primaryDimension 0;
-  padding-left: 10px;
-  @include cardTextStyle($colorBlue, $fontSizeXl);
-  font-weight: $fontWeight;
-}
-
-.input-hint {
-  color: #888;
-  font-size: $fontSizeText;
-  margin: 20px;
-  display: block;
-}
-
-.right-container-todays-highlight-cards {
-  flex: 8;
-  @include flexCenterRow;
-}
-
-.right-container-todays-highlight-card-title {
-  margin-bottom: 10px;
-  @include cardTextStyle($colorBlue, $fontSizeXl);
-}
-
-.right-container-todays-highlight-value {
-  margin-top: 10px;
-  font-size: $fontSizeXl;
-  font-weight: $fontWeightSemiBold;
-}
-
-.right-container-todays-highlight-card {
-  @include cardStyle(260px, 180px);
-}
-
-.card,
-.week-card {
-  background-color: $colorWhite;
-  border-radius: 10px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: $fontSizeXl;
-  font-weight: $fontWeightSemiBold;
-}
-
-.card {
-  width: 100px;
-  height: 150px;
-  margin: 0 5px;
-}
-
-.week-card {
-  width: 100px;
-  height: 100px;
-}
-
-.card-temp-img img {
-  @include imageSize(50px, 50px);
-  margin-top: 5px;
-}
-
-.card-day {
-  margin-top: 5px;
-}
-
-.card-temp-value {
-  margin: 10px 0;
-}
-
-.nav-bar__tabs {
-  @include commonNavBar($flexDirectionRow);
-  margin-left: $primaryDimension;
-}
-
-.nav-bar__tabs--today,
-.nav-bar__tabs--week {
-  color: $colorGray;
-}
-
-.nav-bar__tabs--today:hover {
-  color: $colorDark;
-  cursor: pointer;
-}
-
-.nav-bar__tabs--today-active,
-.nav-bar__tabs--week-active {
-  color: $colorBlue;
-  font-size: $fontSizeXl;
-  margin-left: 10px;
-}
-
-.nav-bar__tabs--today-active {
-  margin-right: 20px;
-}
-
-.nav-bar__metrics {
-  @include commonNavBar($flexDirectionRow);
-  margin-right: $primaryDimension;
-}
-
-.nav-bar__tabs--week:hover {
-  color: $colorBlue;
-  cursor: pointer;
-}
-
-.search-input {
-  height: $primaryDimension;
-  width: 400px;
-  margin-left: 20px;
-  border-radius: $primaryDimension;
-  margin-top: $primaryDimension;
-  outline: none;
-  padding: 8px 12px;
-  font-size: $fontSizeText;
-  border: 2px solid #333;
-}
-
-.left-container_box {
-  @include commonContainer;
-}
-
-.left-container-box__nav-bar {
-  @include flexColumn;
-  align-items: flex-start;
-  gap: 4px;
-  margin-bottom: 12px;
-}
-
-.left-container-box__data-box {
-  flex: 12;
-  @include flexColumn;
-  margin: 0 $primaryDimension;
-  font-size: $fontSizel;
-}
-
-.left-container-temp-data {
-  flex: 1;
-  @include flexColumn;
-}
-
-.left-container-temp-img {
-  flex: 2;
-}
-
-.left-container-temp-img img {
-  @include imageSize(400px, 300px, 30px);
-}
-
-.left-container-temp-value {
-  flex: 1;
-  font-size: 62px;
-  font-weight: normal;
-}
-
-.left-container-temp-value sup {
-  position: relative;
-  top: 3px;
-  font-size: 36px;
-}
-
-.left-container-day-time,
-.left-container-temp-summary-value,
-.left-container-rain-weather-value {
-  margin-top: 10px;
-}
-
-.left-container-temp-summary {
-  flex: 2;
-  display: $display;
-  flex-direction: $flexDirectionRow;
-}
-
-.left-container-rain-stats {
-  flex: 2;
-  display: $display;
-  flex-direction: $flexDirectionRow;
-}
-
-.left-container-other-details {
-  flex: 2;
-  @include flexColumn;
-}
-
-.left-container-location-details {
-  flex: 5;
-  @include flexColumn;
-  text-align: center;
-}
-
-.left-container-location-img img {
-  @include imageSize(400px, 150px, 30px);
-  margin-top: 30px;
-}
-
-.left-container-location-name {
-  margin-top: -80px;
-  font-size: 25px;
-  font-weight: $fontWeightBolder;
-}
-
-.left-container-rain-stats-value {
-  margin: 20px 0;
-}
 
 .loader {
   display: inline-grid;
 }
+
 .loader:before,
 .loader:after {
   content: "";
   grid-area: 1/1;
   height: 28px;
   aspect-ratio: 5;
-  --c: #000 90deg,#0000 0;
+  --c: #000 90deg, #0000 0;
   background:
-   conic-gradient(from 135deg at top   ,var(--c)),
-   conic-gradient(from -45deg at bottom,var(--c)) 12.5% 100%;
+    conic-gradient(from 135deg at top, var(--c)),
+    conic-gradient(from -45deg at bottom, var(--c)) 12.5% 100%;
   background-size: 20% 50%;
   background-repeat: repeat-x;
-  -webkit-mask: repeating-linear-gradient(90deg,#000 0 10%,#0000 0 20%);
+  -webkit-mask: repeating-linear-gradient(90deg, #000 0 10%, #0000 0 20%);
   clip-path: inset(0 100% 0 0);
-  animation: l14 1.5s infinite steps(6,jump-none);
+  animation: l14 1.5s infinite steps(6, jump-none);
 }
+
 .loader:after {
   scale: -1 1;
 }
-@keyframes l14{
-  to {clip-path: inset(0)}
+
+@keyframes l14 {
+  to {
+    clip-path: inset(0)
+  }
 }

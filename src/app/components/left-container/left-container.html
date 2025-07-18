@@ -1,35 +1,55 @@
 <div class="left-container-box">
-    <div class="left-container-box__nav-bar">
-        <div>
-        <input type="text" class="search-input" placeholder="search for Places ..." [(ngModel)]="searchCityName" (keyup.enter)="getData(searchCityName)">
-         <small class="input-hint">Press <strong>Enter</strong> to search</small>
-        </div>
+  <div class="left-container-box__nav-bar">
+    <div>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="search for Places ..."
+        [(ngModel)]="searchCityName"
+        (keyup.enter)="getData(searchCityName)"
+      />
+      <small class="input-hint">Press <strong>Enter</strong> to search</small>
     </div>
-    <div class="left-container-box__data-box" >
-        <!-- <div class="loader" *ngIf="!weatherData"> -->
-        <div class="left-container-temp-data">
-                <div class="left-container-temp-img"><img src="cool.png" alt=""></div>
-                <div class="left-container-temp-value">{{weatherData?.current?.temp_c}}<sup>°C</sup></div>
-                <div class="left-container-day-time">{{weatherData?.location?.localtime |dayTime:'dayTime'}}</div>
-            </div>
-        <!-- </div> -->
-        <div class="diving-line"></div>
-        <div class="left-container-other-details">
-            <div class="left-container-temp-summary">
-                <div class="left-container-temp-summary-phrase-img"></div>
-            <div class="left-container-temp-summary-value">{{weatherData?.current?.condition?.text}}</div>
-            </div>
-            <div class="left-container-weather-stats">
-                <div class="left-container-rain-stats-value">Humidity : {{weatherData?.current?.humidity}}</div>
-                <div class="left-container-rain-stats-value">Wind : {{weatherData?.current?.wind_kph}} kph ({{weatherData?.current?.wind_dir}}) </div>
-
-                
-            </div>
-            <div class="left-container-location-details">
-                <div class="left-container-location-img"><img src="img.png" alt=""></div>
-                <div class="left-container-location-name">{{weatherData?.location?.name}}, {{weatherData?.location?.country}}</div>
-            </div>
-        </div>
-
+  </div>
+  <div class="left-container-box__data-box">
+    <!-- <div class="loader" *ngIf="!weatherData"> -->
+    <div class="left-container-temp-data">
+      <div class="left-container-temp-img"><img src="img.png" alt="" /></div>
+      <div class="left-container-temp-value">
+        {{ weatherData?.current?.temp_c }}<sup>°C</sup>
+      </div>
+      <div class="left-container-day-time">
+        {{ weatherData?.location?.localtime | dayTime : "dayTime" }}
+      </div>
     </div>
+    <!-- </div> -->
+    <div class="diving-line"></div>
+    <div class="left-container-other-details">
+      <div class="left-container-temp-summary">
+        <div class="left-container-temp-summary-phrase-img"></div>
+        <div class="left-container-temp-summary-value">
+          {{ weatherData?.current?.condition?.text }}
+        </div>
+      </div>
+      <div class="left-container-weather-stats">
+        <div class="left-container-rain-stats-value">
+          Humidity : {{ weatherData?.current?.humidity }}
+        </div>
+        <div class="left-container-rain-stats-value">
+          Wind : {{ weatherData?.current?.wind_kph }} kph ({{
+            weatherData?.current?.wind_dir
+          }})
+        </div>
+      </div>
+      <div class="left-container-location-details">
+        <div class="left-container-location-img">
+          <img src="cool.png" alt="" />
+        </div>
+        <div class="left-container-location-name">
+          {{ weatherData?.location?.name }},
+          {{ weatherData?.location?.country }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

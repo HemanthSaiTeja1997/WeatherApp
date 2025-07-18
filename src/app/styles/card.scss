@@ -1,0 +1,36 @@
+@import './variables.scss';
+@import './mixins';
+.card,
+.week-card {
+  background-color: $colorWhite;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: $fontSizeXl;
+  font-weight: $fontWeightSemiBold;
+}
+
+.card {
+  width: 100px;
+  height: 150px;
+  margin: 0 5px;
+}
+
+.week-card {
+  width: 100px;
+  height: 100px;
+}
+
+.card-temp-img img {
+  @include imageSize(50px, 50px);
+  margin-top: 5px;
+}
+
+.card-day {
+  margin-top: 5px;
+}
+
+.card-temp-value {
+  margin: 10px 0;
+}

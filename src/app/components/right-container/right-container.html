@@ -21,51 +21,91 @@
       </div>
     </div>
   </div>
-<div class="right-container-box__data-box">
-    <div class="right-container-week-cards" *ngIf="week==true">
+  <div class="right-container-box__data-box">
+    <div class="right-container-week-cards" *ngIf="week == true">
       <div class="card" *ngFor="let day of weatherData?.forecast?.forecastday">
-        <div class="card-day">{{day.date | dayTime:'day'}}</div>
-        <div class="card-temp-img"><img img [src]="'https:' + day.day.condition.icon" [alt]="day.day.condition.text"></div>
-        <div class="card-temp-value"><span class="temp-max">{{day.day.maxtemp_c}}°C</span></div>
+        <div class="card-day">{{ day.date | dayTime : "day" }}</div>
+        <div class="card-temp-img">
+          <img
+            img
+            [src]="'https:' + day.day.condition.icon"
+            [alt]="day.day.condition.text"
+          />
+        </div>
+        <div class="card-temp-value">
+          <span class="temp-max">{{ day.day.maxtemp_c }}°C</span>
+        </div>
       </div>
     </div>
-    <div class="right-container-today-cards" *ngIf="today==true">
+    <div class="right-container-today-cards" *ngIf="today == true">
       <div class="card" *ngFor="let hour of evenHours">
-        <div class="card-day">{{hour.time | dayTime:'timeOnly'}}</div>
-        <div class="card-temp-img"><img [src]="'https:' + hour.condition.icon" [alt]="hour.condition.text"></div>
-        <div class="card-temp-value">{{hour.temp_c}}°c</div>
-            </div>
-             
-    </div>
-</div>
-<div class="right-container-today-highlight">
-  <div class="right-container-today-highlight-title">Today's Highlight</div>
-  <div class="right-container-todays-highlight-cards">
-    <div class="right-container-todays-highlight-card">
-      <div class="right-container-todays-highlight-card-title">UV Index</div>
-    <div class="right-container-todays-highlight-value">{{weatherData?.forecast?.forecastday[0].day?.uv}}</div>
-    </div>
-     <div class="right-container-todays-highlight-card">
-      <div class="right-container-todays-highlight-card-title">SunRise & SunSet</div>
-    <div class="right-container-todays-highlight-value">{{weatherData?.forecast?.forecastday[0].astro?.sunrise}}</div>
-    <div class="right-container-todays-highlight-value">{{weatherData?.forecast?.forecastday[0].astro?.sunset}}</div>
-
-    </div> <div class="right-container-todays-highlight-card">
-      <div class="right-container-todays-highlight-card-title">Visibility</div>
-    <div class="right-container-todays-highlight-value">{{weatherData?.current?.vis_km}} <span> km</span></div>
+        <div class="card-day">{{ hour.time | dayTime : "timeOnly" }}</div>
+        <div class="card-temp-img">
+          <img
+            [src]="'https:' + hour.condition.icon"
+            [alt]="hour.condition.text"
+          />
+        </div>
+        <div class="card-temp-value">{{ hour.temp_c }}°c</div>
+      </div>
     </div>
   </div>
-   <div class="right-container-todays-highlight-cards">
-    <div class="right-container-todays-highlight-card">
-      <div class="right-container-todays-highlight-card-title">Wind Status</div>
+  <div class="right-container-today-highlight">
+    <div class="right-container-today-highlight-title">Today's Highlight</div>
+    <div class="right-container-todays-highlight-cards">
+      <div class="right-container-todays-highlight-card">
+        <div class="right-container-todays-highlight-card-title">What's Today</div>
+        <div class="right-container-todays-highlight-value">
+        {{weatherData?.location?.localtime | dayTime : "today" }}
+        </div>
+         <div class="right-container-todays-highlight-value">
+        {{ weatherData?.current?.condition?.text }}
+        </div>
 
-    <div class="right-container-todays-highlight-value">{{weatherData?.current?.wind_kph}}<span> km/h</span></div>
+        
+      </div>
+      <div class="right-container-todays-highlight-card">
+        <div class="right-container-todays-highlight-card-title">
+          SunRise & SunSet
+        </div>
+        <div class="right-container-todays-highlight-value">
+          {{ weatherData?.forecast?.forecastday[0].astro?.sunrise }}
+        </div>
+        <div class="right-container-todays-highlight-value">
+          {{ weatherData?.forecast?.forecastday[0].astro?.sunset }}
+        </div>
+      </div>
+      <div class="right-container-todays-highlight-card">
+        <div class="right-container-todays-highlight-card-title">
+         Visual Visibility
+        </div>
+        <div class="right-container-todays-highlight-value">
+          {{ weatherData?.current?.vis_km }} <span> km</span>
+        </div>
+      </div>
     </div>
-     <div class="right-container-todays-highlight-card">
-      <div class="right-container-todays-highlight-card-title">Humidity</div>
-    <div class="right-container-todays-highlight-value">{{weatherData?.current?.humidity}} %</div>
-    </div> 
-  </div>
-</div>
+    <div class="right-container-todays-highlight-cards">
+      <div class="right-container-todays-highlight-card">
+        <div class="right-container-todays-highlight-card-title">
+          Wind Status
+        </div>
 
+        <div class="right-container-todays-highlight-value">
+          {{ weatherData?.current?.wind_kph }}<span> km/h</span>
+        </div>
+      </div>
+      <div class="right-container-todays-highlight-card">
+        <div class="right-container-todays-highlight-card-title">Humidity</div>
+        <div class="right-container-todays-highlight-value">
+          {{ weatherData?.current?.humidity }} %
+        </div>
+      </div>
+          <div class="right-container-todays-highlight-card">
+        <div class="right-container-todays-highlight-card-title">UV Index</div>
+        <div class="right-container-todays-highlight-value">
+          {{ weatherData?.forecast?.forecastday[0].day?.uv }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

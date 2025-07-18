@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,12 @@ export class WeatherService {
   }
   getWeatherForecast(city: string, days:number = 7): Observable<any> {
     const url = `${this.baseUrl}/forecast.json?key=${this.apiKey}&q=${city}&days=${days}&aqi=yes&alerts=yes`;
-    return this._http.get(url);
+    return this._http.get(url).pipe(catchError(this.handleError));
+  }
+
+  handleError(error: any) {
+    console.error('Global Error Handler:', error);
+    return throwError(() => error);
   }
  
 }

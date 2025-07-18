@@ -1,0 +1,22 @@
+@import './variables.scss';
+@import './mixins';
+
+.input-hint {
+  color: #888;
+  font-size: $fontSizeText;
+  margin: 20px;
+  display: block;
+}
+
+
+.search-input {
+  height: $primaryDimension;
+  width: 400px;
+  margin-left: 20px;
+  border-radius: $primaryDimension;
+  margin-top: $primaryDimension;
+  outline: none;
+  padding: 8px 12px;
+  font-size: $fontSizeText;
+  border: 2px solid #333;
+}
