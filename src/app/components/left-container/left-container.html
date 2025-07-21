@@ -11,8 +11,8 @@
       <small class="input-hint">Press <strong>Enter</strong> to search</small>
     </div>
   </div>
-  <div class="left-container-box__data-box">
-    <!-- <div class="loader" *ngIf="!weatherData"> -->
+  <div class="errorMessage" *ngIf="errorMessage">{{errorMessage}}</div>
+  <div class="left-container-box__data-box" *ngIf="!errorMessage">
     <div class="left-container-temp-data">
       <div class="left-container-temp-img"><img src="img.png" alt="" /></div>
       <div class="left-container-temp-value">
@@ -22,7 +22,7 @@
         {{ weatherData?.location?.localtime | dayTime : "dayTime" }}
       </div>
     </div>
-    <!-- </div> -->
+
     <div class="diving-line"></div>
     <div class="left-container-other-details">
       <div class="left-container-temp-summary">

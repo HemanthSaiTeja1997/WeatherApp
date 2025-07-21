@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { DayTimePipe } from '../../pipes/day-time-pipe';
 import { WeatherService } from '../../Services/weather-service';
 import { ToastrService } from 'ngx-toastr';
+import { IweatherApiResponse } from '../../iWeatherData';
 
 @Component({
   selector: 'app-left-container',
@@ -13,9 +14,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './left-container.scss',
 })
 export class LeftContainer implements OnInit {
-  weatherData: any;
+  weatherData: IweatherApiResponse| undefined|null;
   searchCityName: string = '';
   defaultCity: string = 'Hyderabad';
+  errorMessage:string='';
   constructor(
     private weatherService: WeatherService,
     private toastMessage:ToastrService
@@ -33,14 +35,18 @@ export class LeftContainer implements OnInit {
       return
     }  ;
     this.weatherService
-      .getWeatherForecast(cityName)
+      .getWeatherForecast(cityName.trim())
       .pipe(take(1))
       .subscribe({
-        next: (res) => {
+        next: (res:IweatherApiResponse) => {
           this.weatherData = res;
           this.searchCityName = '';
-          this.weatherService.setSearchCity(res);
+          this.errorMessage='';
+          this.weatherService.setSearchCity(res.location.name);
         },
+        error:(error)=>{
+          this.errorMessage=error?.error?.error.message;
+        }
       });
   }
 }

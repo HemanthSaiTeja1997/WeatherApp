@@ -1,25 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { WeatherService } from '../../Services/weather-service';
 import { DayTimePipe } from '../../pipes/day-time-pipe';
+import { IweatherApiResponse } from '../../iWeatherData';
 
 @Component({
   selector: 'app-right-container',
-  imports: [MatButtonModule, MatCardModule, CommonModule, DayTimePipe],
+  imports: [CommonModule, DayTimePipe],
   templateUrl: './right-container.html',
   styleUrl: './right-container.scss',
 })
 export class RightContainer implements OnInit {
   evenHours: any[] = [];
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService) { }
   ngOnInit(): void {
     this.getHourlyWeather();
   }
   today: boolean = false;
   week: boolean = true;
-  weatherData: any;
+  weatherData: IweatherApiResponse | undefined | null;
 
   onTodayClick(): void {
     this.today = true;
@@ -29,22 +28,27 @@ export class RightContainer implements OnInit {
     this.week = true;
     this.today = false;
   }
-  getHourlyWeather() {
+  getHourlyWeather(): void {
     this.weatherService.citySearch$.subscribe({
-      next: (res) => {
-        this.weatherData = res;
-        console.log('....>>>>>Inside right container', this.weatherData);
-        const hours = this.weatherData?.forecast?.forecastday[0]?.hour;
-        if (hours && Array.isArray(hours)) {
-          this.evenHours = hours.filter((item: any) => {
-            const hour = new Date(item.time).getHours();
-            return hour % 2 === 0;
-          });
-        }
-        console.log('evenhour', this.evenHours);
+      next: (city: string) => {
+        this.weatherService.getWeatherForecast(city).subscribe({
+          next: (res: IweatherApiResponse) => {
+            this.weatherData = res;
+            const hours = res?.forecast?.forecastday[0]?.hour;
+            if (hours && Array.isArray(hours)) {
+              this.evenHours = hours.filter((item: any) => {
+                const hour = new Date(item.time).getHours();
+                return hour % 2 === 0;
+              });
+            }
+          },
+          error: (error) => {
+            console.error('Forecast API error:', error);
+          },
+        });
       },
       error: (error) => {
-        console.error(error);
+        console.error('City stream error:', error);
       },
     });
   }

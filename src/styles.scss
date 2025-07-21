@@ -16,6 +16,14 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+.errorMessage{
+  font-size: x-large;
+  font-weight: bolder;
+  color: red;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 .pageNotFound{
   background-color: rgb(186, 186, 215);
   height: 100vh;

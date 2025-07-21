@@ -22,6 +22,7 @@
     </div>
   </div>
   <div class="right-container-box__data-box">
+    <div class="loading" ></div>
     <div class="right-container-week-cards" *ngIf="week == true">
       <div class="card" *ngFor="let day of weatherData?.forecast?.forecastday">
         <div class="card-day">{{ day.date | dayTime : "day" }}</div>
@@ -54,30 +55,30 @@
     <div class="right-container-today-highlight-title">Today's Highlight</div>
     <div class="right-container-todays-highlight-cards">
       <div class="right-container-todays-highlight-card">
-        <div class="right-container-todays-highlight-card-title">What's Today</div>
+        <div class="right-container-todays-highlight-card-title">
+          What's Today
+        </div>
         <div class="right-container-todays-highlight-value">
-        {{weatherData?.location?.localtime | dayTime : "today" }}
+          {{ weatherData?.location?.localtime | dayTime : "today" }}
         </div>
-         <div class="right-container-todays-highlight-value">
-        {{ weatherData?.current?.condition?.text }}
+        <div class="right-container-todays-highlight-value">
+          {{ weatherData?.current?.condition?.text }}
         </div>
-
-        
       </div>
       <div class="right-container-todays-highlight-card">
         <div class="right-container-todays-highlight-card-title">
           SunRise & SunSet
         </div>
         <div class="right-container-todays-highlight-value">
-          {{ weatherData?.forecast?.forecastday[0].astro?.sunrise }}
+          {{ weatherData?.forecast?.forecastday?.[0]?.astro?.sunrise }}
         </div>
         <div class="right-container-todays-highlight-value">
-          {{ weatherData?.forecast?.forecastday[0].astro?.sunset }}
+          {{ weatherData?.forecast?.forecastday?.[0]?.astro?.sunset }}
         </div>
       </div>
       <div class="right-container-todays-highlight-card">
         <div class="right-container-todays-highlight-card-title">
-         Visual Visibility
+          Visual Visibility
         </div>
         <div class="right-container-todays-highlight-value">
           {{ weatherData?.current?.vis_km }} <span> km</span>
@@ -100,10 +101,10 @@
           {{ weatherData?.current?.humidity }} %
         </div>
       </div>
-          <div class="right-container-todays-highlight-card">
+      <div class="right-container-todays-highlight-card">
         <div class="right-container-todays-highlight-card-title">UV Index</div>
         <div class="right-container-todays-highlight-value">
-          {{ weatherData?.forecast?.forecastday[0].day?.uv }}
+          {{ weatherData?.forecast?.forecastday?.[0]?.day?.uv }}
         </div>
       </div>
     </div>
