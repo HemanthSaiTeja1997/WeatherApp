@@ -22,7 +22,6 @@
     </div>
   </div>
   <div class="right-container-box__data-box">
-    <div class="loading" ></div>
     <div class="right-container-week-cards" *ngIf="week == true">
       <div class="card" *ngFor="let day of weatherData?.forecast?.forecastday">
         <div class="card-day">{{ day.date | dayTime : "day" }}</div>
